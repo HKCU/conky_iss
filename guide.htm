@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ISS-Conky Help and Configuration Guide</title>
+<style>
+#maintext {
+	font-family:Arial,Helvetica,sans-serif;
+	font-size:1.00em;
+	margin-left:auto;
+	margin-right:auto;
+	width: 75%;
+	background-color:#eef;
+	border: 1px solid black;
+	padding: 10px;
+}
+.red {
+	color: red;
+}
+</style>
+</head>
+<body>
+<div id="maintext">
+<h1>ISS-Conky Help and Configuration Guide</h1>
+<hr />
+<h2>Introduction</h2>
+This document describes how to install and configure "Conky-iss" , a Conky project I developed for my Ubuntu 16.04 LTS system.<br />
+<br />
+After downloading and unzipping the archive, move the archive to your $HOME (~) directory and call it .conky_iss (note the preceding dot to make it a hidden folder).<br />
+Inside that folder, you will see the following files<br />
+<ul>
+<li><b>Readme.md</b> - Always read a Readme file!</li>
+<li><b>guide.htm</b> - This document</li>
+<li><b>screenshot.png</b> - Screenshot of what it looks like in my own environment</li>
+<li><b>conky_disk.conf</b> - Configuration for the disk usage Conky</li>
+<li><b>conky_clock.conf</b> - Configuration for the clock Conky</li>
+<li><b>conky_sys.conf</b> - Configuration for the system Conky</li>
+<li><b>conky_functions.lua</b> - Lua script, this contains further configuration</li>
+<li><b>launch_conky.sh</b> - Launcher script</li>
+<li><b>LICENCE</b> - The MIT licence agreement (please read before using this software but don't worry: it's not onerous!)</li>
+</ul>
+<br />
+The scripts with the supplied configuration works well with the photograph of the International Space Station in the supplied screenshot.
+When using a different wallpaper, you may want to change some things to get it to look exactly how you want.<br />
+<br />
+I also make use of a font called &quot;Nasalization&quot; if this is not what you want, then change every instance of the word &quot;Nasalization&quot; in every code source file to the desired font.<br />
+<br />
+The ISS wallpaper and Nasalization font are both copyrighted material, although free to use I have deliberately not included them with this repo as I haven't checked the rights regarding redistribution.<br />
+<hr />
+<h2>Installation and Launching</h2>
+After extracting the ZIP archive, move it to your $HOME directory and call it .conky_iss.  That is, the full path to the folder will be $HOME/.conky_iss (or ~/.conky_iss).<br />
+Open the folder and lanuch it by double-clicking on launch_conky.sh.  You can create a symbolic link to allow it to be launched from anywhere else if you wish.<br />
+<hr />
+<h2>Conky Configuration Parameters</h2>
+Pertains to files: <b>conky_disk.conf</b>, <b>conky_clock.conf</b> and <b>conky_sys.conf</b><br />
+Only the ones highlighted in <span class="red">red</span> are different between the Conky set-ups in this project.<br />
+Full details for Conky configuration can be found online (that's a polite way to say STFW!).<br />
+<ul>
+	<li><b>alignment</b> - Where to place the Conky window, for example top_left means top left on the left-hand monitor</li>
+	<li><b>background</b> - Leave set to <b>true</b></li>
+	<li><b>border_width</b> - Border width surrounding the Conky window</li>
+	<li><b>cpu_avg_samples</b> - Leave set to <b>2</b></li>
+	<li><b>default_color</b> - Default Conky text colour, set to &quot;gray&quot;</li>
+	<li><b>default_outline_color</b> - Default value is &quot;white&quot;</li>
+	<li><b>default_shade_color</b> - Default value is &quot;white&quot;</li>
+	<li><b>draw_borders</b> - Default value is <b>false</b></li>
+	<li><b>draw_graph_borders</b> - Default value is <b>true</b></li>
+	<li><b>draw_outline</b> - Default value is <b>false</b></li>
+	<li><b>draw_shades</b> - Default value is <b>false</b></li>
+	<li><b>use_xft</b> - Default value is <b>true</b></li>
+	<li><b>font</b> - Default font, value is &quot;DejaVu Sans Mono:size=11&quot;</li>
+	<li><b><span class="red">gap_x</span><class></b> - How far to the right/left to place the Conky window from the <b>alignment</b> above</li>
+	<li><b><span class="red">gap_y</span></b> - How far from the top/bottom to place the Conky window from the <b>alignment</b> above</li>
+	<li><b><span class="red">minimum_height</span></b> - Minimum Conky window height</li>
+	<li><b><span class="red">minimum_width</span></b> - Minimum Conky window width</li>
+	<li><b><span class="red">maximum_width</span></b> - Maximum Conky Window width</li>
+	<li><b>net_avg_samples</b> - Default value is <b>2</b></li>
+	<li><b>no_buffers</b> - Default value is <b>true</b></li>
+	<li><b>out_to_console</b> - Default value is <b>false</b></li>
+	<li><b>out_to_stderr</b> - Default value is <b>false</b></li>
+	<li><b>extra_newline</b> - Default value is <b>false</b></li>
+	<li><b>own_window</b> - Default value is <b>true</b></li>
+	<li><b>own_window_class</b> - Leave this set to &quot;Conky&quot;</li>
+	<li><b>own_window_type</b> - Leave this set to &quot;normal&quot;</li>
+	<li><b>own_window_hints</b> - Leave this set to &quot;undecorated,below,sticky,skip_taskbar,skip_pager&quot;</li>
+	<li><b>own_window_transparent</b> - Default value is <b>false</b></li>
+	<li><b>own_window_argb_visual</b> - Default value is <b>true</b></li>
+	<li><b><span class="red">own_window_argb_value</span></b> - Alpha, Red, Green, Blue value for window (0 = transparent)</li>
+	<li><b>double_buffer</b> - Leave set to <b>true</b> unless you like flickering Conky windows!</li>
+	<li><b>stippled_borders</b> - Default value is <b>0</b></li>
+	<li><b>update_interval</b> - Update frequency in seconds</li>
+	<li><b>uppercase</b> - Default value is <b>false</b></li>
+	<li><b>use_spacer</b> - Default value is &quot;none&quot;</li>
+	<li><b>show_graph_scale</b> - Default value is <b>false</b></li>
+	<li><b>show_graph_range</b> - Default value is <b>false</b></li>
+	<li><b>lua_load</b> - Path and name of the Lua file <b>(leave this alone!)</b></li>
+</ul>
+<hr />
+<h2>Lua functions Configuration Parameters</h2>
+Pertains to file: <b>conky_functions.lua</b>
+The top part of this file contains the configuration tables for the rings and the clock. After that come the functions themselves.<br />
+A convention I have adopted is that any function whose name begins with &quot;conky_&quot; is one which is called from a Conky configuration file
+whereas a function whose names does NOT begin with &quot;conky_&quot; is only ever used inside this file.
+Any additions should hopefully follow this convention.<br />
+<h3>Conky Disk Usage Configuration</h3>
+This consists of an array, one entry in the array <b>ringdefs</b>for each ring to be displayed.  These are the main settings for each ring to be drawn (not exhaustive) and it is recommended that any undocumented ones are left as-is:<br />
+<ul>
+	<li><b>parm</b> - Shell command to run to get the value for the used amount of the ring.  If blank, then use <b>min</b></li>
+	<li><b>min</b> - Minimum value, usually zero
+	<li><b>max</b> - Maximum value, must be greater than <b>min</b> but if not, then the Shell command in <b>max_command</b> will be run to get a maximum value</li>
+	<li><b>max_command</b> - If <b>max</b> is less than or equal to <b>min</b> (see below), then run this shell command to obtain the maximum value</li>
+	<li><b>bg_colour</b> - Background colour as an RGB value, for example, 0xff0000</li>
+	<li><b>bg_alpha</b> - Background alpha value, for example 0.6</li>
+	<li><b>fg_colour</b> - Foreground colour as an RGB value, for example, 0xff0000</li>
+	<li><b>fg_alpha</b> - Foreground alpha value, for example 0.6</li>
+	<li><b>x</b> - X-coordinate of the centre of the ring, for example 200</li>
+	<li><b>y</b> - Y-coordinate of the centre of the ring, for example 200</li>
+	<li><b>radius</b> - Ring radius, for example 150</li>
+	<li><b>thickness</b> - Ring thickness, for example 24</li>
+	<li><b>start_angle</b> - Start angle from the top of the ring going clockwise in degrees, for example 30</li>
+	<li><b>end_angle</b> - End angle from the top of the ring going clockwise in degrees, for example 330</li>
+	<li><b>text</b> - Display text, for example &quot;/dev/sda5&quot;</li>
+	<li><b>text_hoffset</b> - Text horizontal offset, for example 144.  If may be necessary to fiddle with this to get it right.</li>
+	<li><b>text_voffset</b> - Text vertical offset, for example 120.  If may be necessary to fiddle with this to get it right.</li>
+	<li><b>text_fontface</b> - Font face for the text, for example &quot;Nasalization&quot;</li>
+	<li><b>text_fontsz</b> - Font size, for example 12</li>
+	<li><b>text_colour</b> - Text colour, for example &quot;Black&quot;</li>
+</ul>
+
+<h3>Conky Clock Configuration</h3>
+This is a simple analogue clock with hours, minutes and seconds hands.  It also gives the time in digital form as well as the current system date.
+The configuration is held in a Lua table called <b>clockpars</b> and contains the following settings:<br />
+<ul>
+	<li><b>parm</b> - If this is set to &quot;Yes&quot; then show the clock.  Otherwise, don't bother</li>
+	<li><b>clockface_colour</b> - Colour to use for the clock face as an RGB value.  Default is <b>0x000033</b></li>
+	<li><b>clockface_alpha</b> - Alpha value for the clock face.  Default is <b>0.8</b></li>
+	<li><b>x</b> - X-coordinate in the Conky box of the centre of the clock.  Default is <b>200</b></li>
+	<li><b>y</b> - Y-coordinate in the Conky box of the centre of the clock.  Default is <b>200</b></li>
+	<li><b>radius</b> - Clock radius.  Default is <b>160</b></li>
+	<li><b>border_size</b> - Clock border; this is in addition to the <b>radius</b>, not included in it.  Default is <b>4</b></li>
+	<li><b>border_colour</b> - Colour of the clock border as an RGB value in hex.  Default is <b>0xaaaaee</b></li>
+	<li><b>border_alpha</b> - Alpha value for the clock border.  Default is <b>0.8</b></li>
+	<li><b>hour_marker_colour</b> - Colour to use for the twelve hour markers around the clock.  Default is <b>0xcccccc</b></li>
+	<li><b>hour_marker_alpha</b> - Alpha value for the twelve hour markers around the clock.  Default is <b>0.8</b></li>
+	<li><b>hour_marker_thickness</b> - How thick the twelve hour markers are.  Default is <b>4</b></li>
+	<li><b>hour_marker_percentage</b> - Percentage of the <b>radius</b> to use as the length of the hour markers.  Default is <b>20</b> (percent)</li>
+	<li><b>minute_marker_colour</b> - Colour to use for the 48 minute markers around the clock.  Default is <b>0xaaaaaa</b></li>
+	<li><b>minute_marker_alpha</b> - Alpha value for the 48 minute markers around the clock.  Default is <b>0.8</b></li>
+	<li><b>minute_marker_thickness</b> - How thick the 48 minute markers are.  Default is <b>2</b></li>
+	<li><b>minute_marker_percentage</b> - Percentage of the <b>radius</b> to use as the length of the minute markers.  Default is <b>10</b> (percent)</li>
+	<li><b>seconds_hand_colour</b> - Colour to use for the seconds hand.  Default is <b>0xff0000</b> (red)</li>
+	<li><b>seconds_hand_alpha</b> - Alpha value for the seconds hand.  Default is <b>1.0</b></li>
+	<li><b>seconds_hand_thickness</b> - How thick the seconds hand is.  Default is <b>2</b></li>
+	<li><b>seconds_hand_percentage</b> - Percentage of the <b>radius</b> to use for the length of the seconds hand.  Default is <b>90</b> (percent)</li>
+	<li><b>minute_hand_colour</b> - Colour to use for the minute hand.  Default is <b>0x00ff00</b> (green)</li>
+	<li><b>minute_hand_alpha</b> - Alpha value for the minute hand.  Default is <b>0.6</b></li>
+	<li><b>minute_hand_thickness</b> - How thick the minute hand is.  Default is <b>3</b></li>
+	<li><b>minute_hand_percentage</b> - Percentage of the <b>radius</b> to use as the length of the minute hand.  Default is <b>80</b> (percent)</li>
+	<li><b>hour_hand_colour</b> - Colour to use for the hour hand.  Default is <b>0xff8800</b> (orange-ish)</li>
+	<li><b>hour_hand_alpha</b> - Alpha value for the hour hand.  Default is <b>0.6</b></li>
+	<li><b>hour_hand_thickness</b> - How thick the hour hand is.  Default is <b>4</b></li>
+	<li><b>hour_hand_percentage</b> - Percentage of the <b>radius</b> to use as the length of the hour hand.  Default is <b>60</b></li>
+	<li><b>text_voffset</b> - vertical offset for the text (date/time).  Default is <b>220</b>.  You may need to fiddle with this to get it right.  Set to zero to not show the date/time as text.</li>
+	<li><b>text_fontface</b> - The font to use for the date/time text display.  Default is &quot;Nasalization&quot;</li>
+	<li><b>text_fontsz</b> - Font size to use for date/time text display.  Default it <b>14</b></li>
+	<li><b>text_colour</b> - The colour to use when displaying the date and time.  Default is &quot;Grey&quot;</li>
+</ul>
+
+<h3>Conky System Configuration</h3>
+Nonthing in the Lua file (there is just one function to display the CPU details but otherwise it's all done by the Conky config itself).<br />
+<br />
+</div>
+</body>
+</html>
